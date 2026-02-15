@@ -139,3 +139,7 @@
     font-family: var(--font-funnel);
   }
 }
+
+html {
+  scroll-behavior: smooth;
+}

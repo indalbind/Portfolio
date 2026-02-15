@@ -1,39 +1,61 @@
-import { useState } from "react";
+import { useState, useEffect, useRef } from "react";
 import AnimatedNavText from "./AnimatedNavText";
-import { Menu, X } from "lucide-react"; 
+import { Menu, X } from "lucide-react";
+import { Link } from "react-router-dom";
 
 function Navbar() {
     const [isOpen, setIsOpen] = useState(false);
+    const [activeItem, setActiveItem] = useState(null);
+    const navRef = useRef(null);
 
     const navLinks = [
-        { name: "About", href: "#about" },
-        { name: "Skills", href: "#skills" },
-        { name: "Projects", href: "#projects" },
+        { name: "About", href: "/about" },
+        { name: "Skills", href: "/skills" },
+        { name: "Projects", href: "/projects" },
     ];
 
+    // Reset highlight when clicking outside navbar
+    useEffect(() => {
+        function handleOutsideClick(e) {
+            if (navRef.current && !navRef.current.contains(e.target)) {
+                setActiveItem(null);
+            }
+        }
+        document.addEventListener("click", handleOutsideClick);
+        return () => document.removeEventListener("click", handleOutsideClick);
+    }, []);
+
     return (
-        <nav className=" sticky top-0 z-50 w-full border-b border-white/10 bg-[radial-gradient(120%_100%_at_50%_0%,rgba(56,189,248,0.12)_0%,rgba(0,0,0,0)_60%),linear-gradient(to_right,rgba(24,24,27,0.85),rgba(9,9,11,0.85))] backdrop-blur-xl px-6 py-2 md:px-10">
-            <div className=" mx-auto flex max-w-7xl items-center justify-between">
-                {/* Logo Section */}
-                <h2 className=" font-funnel text-xl font-bold tracking-tight text-white">
-                    <AnimatedNavText text="Indal Bind" href="#home" />
+        <nav
+            ref={navRef}
+            className="sticky top-0 z-50 w-full border-b border-white/10
+            bg-[radial-gradient(120%_100%_at_50%_0%,rgba(56,189,248,0.12)_0%,rgba(0,0,0,0)_60%),linear-gradient(to_right,rgba(24,24,27,0.85),rgba(9,9,11,0.85))]
+            backdrop-blur-xl px-6 py-3 md:px-10"
+        >
+            <div className="mx-auto flex max-w-7xl items-center justify-between">
+                {/* Logo */}
+                <h2 className="font-funnel text-xl font-bold text-white">
+                    <Link to="/" onClick={() => setActiveItem(null)}>
+                        Indal Bind
+                    </Link>
                 </h2>
 
                 {/* Desktop Navigation */}
                 <ul className="hidden items-center gap-10 md:flex">
                     {navLinks.map((link) => (
-                        <li
-                            key={link.name}
-                            className="font-funnel text-sm font-medium text-zinc-400 hover:text-white transition-colors"
-                        >
+                        <li key={link.name}>
                             <AnimatedNavText
                                 text={link.name}
                                 href={link.href}
+                                isActive={activeItem === link.name}
+                                onClick={() => setActiveItem(link.name)}
                             />
                         </li>
                     ))}
                     <li>
-                        <ContactButton />
+                        <Link to="/contact" onClick={() => setActiveItem(null)}>
+                            <ContactButton />
+                        </Link>
                     </li>
                 </ul>
 
@@ -46,25 +68,38 @@ function Navbar() {
                 </button>
             </div>
 
-            {/* Mobile Navigation Drawer */}
+            {/* Mobile Menu */}
             <div
-                className={`absolute left-0 top-full w-full border-b border-white/8 bg-zinc-950/95 transition-all duration-300 ease-in-out md:hidden ${
-                    isOpen
-                        ? "translate-y-0 opacity-100"
-                        : "-translate-y-4 opacity-0 pointer-events-none"
-                }`}
+                className={`md:hidden fixed inset-x-0 top-16 z-40
+                  bg-zinc-950/95 backdrop-blur-xl border-t border-white/10
+                   transition-all duration-300
+                ${isOpen ? "opacity-100 translate-y-0" : "opacity-0 -translate-y-2 pointer-events-none"}`}
             >
-                <ul className="flex flex-col gap-6 p-8 text-center">
+                <ul className="flex flex-col gap-6 px-6 py-8">
                     {navLinks.map((link) => (
-                        <li key={link.name} onClick={() => setIsOpen(false)}>
+                        <li key={link.name}>
                             <AnimatedNavText
                                 text={link.name}
                                 href={link.href}
+                                isActive={activeItem === link.name}
+                                onClick={() => {
+                                    setActiveItem(link.name);
+                                    setIsOpen(false);
+                                }}
                             />
                         </li>
                     ))}
-                    <li className="pt-2">
-                        <ContactButton />
+
+                    <li>
+                        <Link
+                            to="/contact"
+                            onClick={() => {
+                                setActiveItem(null);
+                                setIsOpen(false);
+                            }}
+                        >
+                            <ContactButton />
+                        </Link>
                     </li>
                 </ul>
             </div>
@@ -72,11 +107,11 @@ function Navbar() {
     );
 }
 
+
 function ContactButton() {
     return (
         <button className="font-funnel group relative cursor-pointer rounded-full bg-zinc-800 p-px font-semibold text-white transition-all duration-300 active:scale-95 hover:shadow-[0_0_10px_2px_rgba(56,189,248,0.3)]">
             <span className="absolute inset-0 overflow-hidden rounded-full">
-                {/* Increased opacity from 0.4 to 1.0 for maximum brightness */}
                 <span className="absolute inset-0 rounded-full bg-[radial-gradient(75%_100%_at_50%_0%,rgba(56,189,248,1)_0%,rgba(56,189,248,0)_75%)] opacity-0 transition-opacity duration-500 group-hover:opacity-100" />
             </span>
 
