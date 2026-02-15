@@ -9,6 +9,7 @@
 
     /* Fonts */
   --font-funnel: "Funnel Display", ui-sans-serif, system-ui, sans-serif;
+  --font-iceland: "Iceland", ui-sans-serif, system-ui, sans-serif;
 
   /* existing variables below */
   --radius-sm: calc(var(--radius) - 4px);
@@ -137,6 +138,10 @@
 @layer utilities {
   .font-funnel {
     font-family: var(--font-funnel);
+  }
+  .font-iceland{
+    font-family: var(--font-iceland);
+    font-weight: 400;
   }
 }
 

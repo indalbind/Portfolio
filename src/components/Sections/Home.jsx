@@ -1,13 +1,58 @@
+import SocialIcons from "../ui/SocialIcons";
+import { useEffect, useState } from "react";
+import Highlight from "../ui/Highlight";
+import NeuralNetwork from "../ui/NeuralNetwork";
+import SectionDivider from "../ui/SectionDivider";
+import WhatIDo from "./WhatIDo";
+
 
 const Home = () => {
+    const [active, setActive] = useState("ml");
+
+    useEffect(() => {
+        const interval = setInterval(() => {
+            setActive((prev) => (prev === "ml" ? "dl" : "ml"));
+        }, 2600);
+        return () => clearInterval(interval);
+    }, []);
+
     return (
-        <section
-            className=" flex items-center justify-center pt-20"
-        >
-            <div className="text-2xl text-amber-900 text-center ">
-                <h1>Home page</h1>
-            </div>
-        </section>
+        <>
+            {/* HERO */}
+            <section className="relative min-h-screen flex items-center px-6 md:px-16">
+                <div className="mx-auto grid max-w-7xl grid-cols-1 md:grid-cols-2 gap-12 items-center">
+                    <div className="space-y-6">
+                        <h1 className="font-iceland text-4xl md:text-6xl text-zinc-800 leading-tight">
+                            <Highlight active={active === "ml"} color="emerald">
+                                Machine Learning,
+                            </Highlight>{" "}
+                            <Highlight active={active === "dl"} color="red">
+                                Deep Learning
+                            </Highlight>{" "}
+                            & Web developer
+                        </h1>
+
+                        <p className="font-funnel max-w-xl text-zinc-600 text-sm md:text-base leading-relaxed">
+                            I’m Indal Bind, a full-stack developer and AI/ML &
+                            Deep Learning engineer pursuing the IIT Madras BS
+                            Degree. I design scalable backends, modern
+                            frontends, and deploy intelligent systems for
+                            real-world use.
+                        </p>
+
+                        <SocialIcons />
+                    </div>
+
+                    <div className="flex justify-center items-center mt-10 md:mt-0 w-full">
+                        <NeuralNetwork />
+                    </div>
+                </div>
+            </section>
+            {/* DIVIDER */}
+            <SectionDivider label="Overview" />
+            {/* WHAT I DO */}
+            <WhatIDo />
+        </>
     );
 };
 

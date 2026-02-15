@@ -64,7 +64,7 @@ function App() {
                     </Routes>
                 </main>
 
-                <footer className="py-6 text-center text-zinc-600 text-sm">
+                <footer className="mt-24 py-6 text-center text-zinc-600 text-sm">
                     © 2026 Indal Bind. All rights reserved.
                 </footer>
             </div>
