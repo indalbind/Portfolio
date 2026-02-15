@@ -1,4 +1,4 @@
-// src/components/Sections/About.jsx
+
 const About = () => {
     return (
         <section className="flex items-center justify-center pt-20">

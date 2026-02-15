@@ -143,3 +143,15 @@
 html {
   scroll-behavior: smooth;
 }
+
+/* Text selection */
+::selection {
+  background-color: rgba(21, 177, 239, 0.45); /* warm neutral */
+  color: #1c1c1c;
+}
+
+/* Firefox support */
+::-moz-selection {
+  background-color: rgba(180, 160, 140, 0.45);
+  color: #1c1c1c;
+}
