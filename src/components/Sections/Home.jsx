@@ -4,6 +4,8 @@ import Highlight from "../ui/Highlight";
 import NeuralNetwork from "../ui/NeuralNetwork";
 import SectionDivider from "../ui/SectionDivider";
 import WhatIDo from "./WhatIDo";
+import Core_tech from "../ui/Core_tech"
+
 
 
 const Home = () => {
@@ -33,10 +35,10 @@ const Home = () => {
                         </h1>
 
                         <p className="font-funnel max-w-xl text-zinc-600 text-sm md:text-base leading-relaxed">
-                            I’m Indal Bind, a <b>full-stack developer </b>  and <b>AI/ML &
-                            Deep Learning engineer </b>  pursuing the IIT Madras BS
-                            Degree. I design scalable backends, modern
-                            frontends, and deploy intelligent systems for
+                            I’m Indal Bind, a <b>full-stack developer </b> and{" "}
+                            <b>AI/ML & Deep Learning engineer </b> pursuing the
+                            IIT Madras BS Degree. I design scalable backends,
+                            modern frontends, and deploy intelligent systems for
                             real-world use.
                         </p>
 
@@ -52,6 +54,9 @@ const Home = () => {
             <SectionDivider label="Overview" />
             {/* WHAT I DO */}
             <WhatIDo />
+            <SectionDivider label="Tools" />
+            <Core_tech></Core_tech>
+            
         </>
     );
 };

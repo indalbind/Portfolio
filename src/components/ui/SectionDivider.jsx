@@ -17,7 +17,7 @@ const SectionDivider = ({ label }) => {
             />
 
             {label && (
-                <span className="font-funnel text-xs uppercase tracking-widest text-zinc-500">
+                <span className="font-iceland text-0.5xl uppercase tracking-widest text-zinc-500">
                     {label}
                 </span>
             )}

@@ -9,26 +9,30 @@ const WhatIDo = () => {
 
             <div className="grid gap-6 md:grid-cols-3">
                 <WobbleCard>
-                    <h3 className="text-lg font-semibold">
+                    <h3 className="font-funnel text-lg font-semibold">
                         Full-Stack Development
                     </h3>
-                    <p className="mt-2 text-sm text-zinc-600">
+                    <p className="font-funnel mt-2 text-sm text-zinc-600">
                         Scalable backends, REST APIs, and modern frontend
                         architectures.
                     </p>
                 </WobbleCard>
 
                 <WobbleCard>
-                    <h3 className="text-lg font-semibold">Machine Learning</h3>
-                    <p className="mt-2 text-sm text-zinc-600">
+                    <h3 className=" font-funnel text-lg font-semibold">
+                        Machine Learning
+                    </h3>
+                    <p className=" font-funnel mt-2 text-sm text-zinc-600">
                         Model building, feature engineering, and evaluation
                         pipelines.
                     </p>
                 </WobbleCard>
 
                 <WobbleCard>
-                    <h3 className="text-lg font-semibold">Deep Learning</h3>
-                    <p className="mt-2 text-sm text-zinc-600">
+                    <h3 className=" font-funnel text-lg font-semibold">
+                        Deep Learning and AI
+                    </h3>
+                    <p className=" font-funnel mt-2 text-sm text-zinc-600">
                         Neural networks, intelligent systems, and deployment.
                     </p>
                 </WobbleCard>
