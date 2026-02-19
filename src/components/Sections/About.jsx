@@ -130,7 +130,7 @@ export default function About() {
             <Passion></Passion>
 
             <div className="py-20">
-                <SectionDivider label="More About Me"></SectionDivider>
+                <SectionDivider label="End"></SectionDivider>
                 {/* any other sections you have to write here  */}
             </div>
         </div>
