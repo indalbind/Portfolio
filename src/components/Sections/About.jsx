@@ -40,7 +40,7 @@ export default function About() {
                                 </b>
                                 . My work emphasizes creating reliable AI
                                 systems that perform effectively under
-                                <b>real-world constraints</b>, with{" "}
+                                <b> real-world constraints</b>, with{" "}
                                 <b>web development </b>
                                 used primarily for deployment and system
                                 integration.
