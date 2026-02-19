@@ -3,6 +3,7 @@ import profileImg from "../../assets/Profile.jpeg";
 import SectionDivider from "../ui/SectionDivider";
 import Usage from "./Usage";
 import SoftSkill from "./Softskill";
+import Passion from "./Passion";
 
 export default function About() {
     return (
@@ -126,7 +127,12 @@ export default function About() {
             </div>
 
             <SectionDivider label="Passion"></SectionDivider>
-            
+            <Passion></Passion>
+
+            <div className="py-20">
+                <SectionDivider label="More About Me"></SectionDivider>
+                {/* any other sections you have to write here  */}
+            </div>
         </div>
     );
 }

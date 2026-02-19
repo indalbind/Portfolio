@@ -56,7 +56,7 @@ const TechStackUnderline = () => {
             <motion.div
                 className="absolute top-1/2 h-0.5 w-12 -translate-y-1/2 rounded-full
                        bg-linear-to-r from-indigo-400 via-indigo-500 to-indigo-400"
-                animate={{ x: ["-30%", "275%"] }}
+                animate={{ x: ["-5%", "275%"] }}
                 transition={{
                     duration: 3,
                     repeat: Infinity,
