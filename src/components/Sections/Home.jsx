@@ -35,7 +35,7 @@ const Home = () => {
                         </h1>
 
                         <p className="font-funnel max-w-xl text-zinc-600 text-sm md:text-base leading-relaxed">
-                            I’m Indal Bind, a <b>full-stack developer </b> and{" "}
+                            I’m <span className="font-bold text-amber-950">Indal Bind </span>, a <b>full-stack developer </b> and{" "}
                             <b>AI/ML & Deep Learning engineer </b> pursuing the
                             IIT Madras BS Degree. I design scalable backends,
                             modern frontends, and deploy intelligent systems for
