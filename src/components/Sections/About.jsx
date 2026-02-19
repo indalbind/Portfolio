@@ -73,7 +73,7 @@ export default function About() {
                                     “If you ever spot me in the wild, don’t
                                     hesitate to say hello. Let’s grab a drink
                                     and geek out over End to End Development
-                                    with Ai”
+                                    with Ai integration”
                                 </p>
                             </div>
                         </div>
