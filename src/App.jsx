@@ -7,7 +7,7 @@ import Skill from "./components/Sections/Skill";
 import Project from "./components/Sections/Project";
 import Contact from "./components/Sections/Contact";
 import About from "./components/Sections/About";
-
+import Profile from "./components/Sections/Profile";
 
 function NoiseBackground() {
     return (
@@ -61,6 +61,7 @@ function App() {
                         <Route path="/skills" element={<Skill />} />
                         <Route path="/projects" element={<Project />} />
                         <Route path="/contact" element={<Contact />} />
+                        <Route path="/profile" element={<Profile />} />
                     </Routes>
                 </main>
 
