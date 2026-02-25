@@ -101,7 +101,7 @@ const Contact = () => {
                             <h3 className="text-3xl font-bold text-slate-900 font-funnel mb-3">
                                 Let's build something together.
                             </h3>
-                            <p className="text-slate-600 leading-relaxed text-sm">
+                            <p className="font-funnel text-slate-600 leading-relaxed text-sm">
                                 Whether you have a question, a project
                                 opportunity, or just want to say hi, my inbox is
                                 always open.
@@ -120,7 +120,7 @@ const Contact = () => {
                             >
                                 <GlassCard
                                     delay={index * 0.1}
-                                    className="p-6! flex flex-col items-start group/card"
+                                    className="font-funnel p-6! flex flex-col items-start group/card"
                                 >
                                     {/* Updated: Smaller, pill-shaped icon container exactly like the screenshot */}
                                     <div className="w-16 h-8 rounded-full bg-linear-to-br from-indigo-50 to-rose-50 border border-white shadow-sm flex items-center justify-center text-indigo-500 group-hover/card:scale-105 transition-transform duration-300 mb-4">
@@ -166,7 +166,7 @@ const Contact = () => {
                                             onChange={handleChange}
                                             type="text"
                                             placeholder="Shadow"
-                                            className="w-full px-4 py-3 rounded-xl bg-white/60 border border-slate-200/60 focus:outline-none focus:ring-2 focus:ring-indigo-400 focus:bg-white transition-all text-slate-700 placeholder:text-slate-400"
+                                            className="font-iceland text-1xl w-full px-4 py-3 rounded-xl bg-white/60 border border-slate-200/60 focus:outline-none focus:ring-2 focus:ring-indigo-400 focus:bg-white transition-all text-slate-700 placeholder:text-slate-400"
                                         />
                                     </div>
                                     <div className="space-y-2">
@@ -180,7 +180,7 @@ const Contact = () => {
                                             onChange={handleChange}
                                             type="email"
                                             placeholder="shadow@gmail.com"
-                                            className="w-full px-4 py-3 rounded-xl bg-white/60 border border-slate-200/60 focus:outline-none focus:ring-2 focus:ring-indigo-400 focus:bg-white transition-all text-slate-700 placeholder:text-slate-400"
+                                            className="font-iceland text-1xl w-full px-4 py-3 rounded-xl bg-white/60 border border-slate-200/60 focus:outline-none focus:ring-2 focus:ring-indigo-400 focus:bg-white transition-all text-slate-700 placeholder:text-slate-400"
                                         />
                                     </div>
                                 </div>
@@ -197,7 +197,7 @@ const Contact = () => {
                                         onChange={handleChange}
                                         type="text"
                                         placeholder="Project Inquiry"
-                                        className="w-full px-4 py-3 rounded-xl bg-white/60 border border-slate-200/60 focus:outline-none focus:ring-2 focus:ring-indigo-400 focus:bg-white transition-all text-slate-700 placeholder:text-slate-400"
+                                        className="font-iceland text-1xl w-full px-4 py-3 rounded-xl bg-white/60 border border-slate-200/60 focus:outline-none focus:ring-2 focus:ring-indigo-400 focus:bg-white transition-all text-slate-700 placeholder:text-slate-400"
                                     />
                                 </div>
 
@@ -213,7 +213,7 @@ const Contact = () => {
                                         onChange={handleChange}
                                         rows="5"
                                         placeholder="Tell me about your project..."
-                                        className="w-full px-4 py-3 rounded-xl bg-white/60 border border-slate-200/60 focus:outline-none focus:ring-2 focus:ring-indigo-400 focus:bg-white transition-all text-slate-700 placeholder:text-slate-400 resize-none"
+                                        className="font-iceland text-1xl w-full px-4 py-3 rounded-xl bg-white/60 border border-slate-200/60 focus:outline-none focus:ring-2 focus:ring-indigo-400 focus:bg-white transition-all text-slate-700 placeholder:text-slate-400 resize-none"
                                     ></textarea>
                                 </div>
 
