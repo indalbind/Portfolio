@@ -96,7 +96,7 @@ export default function Usage() {
                 <TechStackUnderline></TechStackUnderline>
 
                 <p className="font-funnel mt-4 max-w-2xl text-gray-600">
-                    Technologies and tools I use to design, build, and deploy
+                    Technologies and tools <b>I use</b> to design, build, and deploy
                     intelligent, production-ready systems.
                 </p>
             </motion.div>
