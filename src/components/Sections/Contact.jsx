@@ -64,7 +64,7 @@ const Contact = () => {
         e.preventDefault();
         setStatus("submitting");
 
-        const FORMSPREE_ENDPOINT = import.meta.env.VITE_FORMSPREE_ENDPOINT; // taking form the env file 
+        const FORMSPREE_ENDPOINT = "https://formspree.io/f/xojnybbe"; 
 
         try {
             const response = await fetch(FORMSPREE_ENDPOINT, {
