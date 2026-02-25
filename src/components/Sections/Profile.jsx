@@ -73,7 +73,7 @@ export default function Profile() {
             ],
         },
         {
-            title: "Software Engineering Intern", // Example second experience
+            title: "Software Engineering", // Example second experience
             subtitle: "Building scalable web applications.",
             icon: Code2, // Make sure Code2 is imported
             points: [
