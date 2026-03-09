@@ -1,25 +1,12 @@
 import { motion } from "framer-motion";
 import { Link } from "react-router-dom";
-import { useEffect, useRef, useState } from "react";
+import { useState } from "react";
 
 function AnimatedNavText({ text, href, isActive, onClick }) {
     const [isHovered, setIsHovered] = useState(false);
-    const ref = useRef(null);
-
-    // Reset animation when clicking outside this link
-    useEffect(() => {
-        function handleOutsideClick(e) {
-            if (ref.current && !ref.current.contains(e.target)) {
-                setIsHovered(false);
-            }
-        }
-        document.addEventListener("click", handleOutsideClick);
-        return () => document.removeEventListener("click", handleOutsideClick);
-    }, []);
 
     return (
         <motion.div
-            ref={ref}
             className="relative inline-block"
             initial="rest"
             animate={isHovered ? "hover" : "rest"}
@@ -29,8 +16,8 @@ function AnimatedNavText({ text, href, isActive, onClick }) {
                 onClick={onClick}
                 onMouseEnter={() => setIsHovered(true)}
                 onMouseLeave={() => setIsHovered(false)}
-                className={`relative inline-block overflow-hidden font-funnel font-medium rounded
-                ${isActive ? "text-blue-400" : "text-white"}`}
+                className="relative inline-block overflow-hidden font-funnel font-medium rounded"
+                style={{ color: isActive ? "#5ca1ff" : "white" }}
             >
                 {/* Normal text */}
                 <motion.span

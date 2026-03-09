@@ -1,12 +1,11 @@
-import { useState, useEffect, useRef } from "react";
+import { useState } from "react";
 import AnimatedNavText from "./AnimatedNavText";
 import { Menu, X } from "lucide-react";
-import { Link } from "react-router-dom";
+import { Link, useLocation } from "react-router-dom";
 
 function Navbar() {
     const [isOpen, setIsOpen] = useState(false);
-    const [activeItem, setActiveItem] = useState(null);
-    const navRef = useRef(null);
+    const location = useLocation();
 
     const navLinks = [
         { name: "About", href: "/about" },
@@ -14,20 +13,8 @@ function Navbar() {
         { name: "Profile", href: "/profile" },
     ];
 
-    // Reset highlight when clicking outside navbar
-    useEffect(() => {
-        function handleOutsideClick(e) {
-            if (navRef.current && !navRef.current.contains(e.target)) {
-                setActiveItem(null);
-            }
-        }
-        document.addEventListener("click", handleOutsideClick);
-        return () => document.removeEventListener("click", handleOutsideClick);
-    }, []);
-
     return (
         <nav
-            ref={navRef}
             className="sticky top-0 z-50 w-full border-b border-white/10
             bg-[radial-gradient(120%_100%_at_50%_0%,rgba(56,189,248,0.12)_0%,rgba(0,0,0,0)_60%),linear-gradient(to_right,rgba(24,24,27,0.85),rgba(9,9,11,0.85))]
             backdrop-blur-xl px-6 py-3 md:px-10"
@@ -35,7 +22,7 @@ function Navbar() {
             <div className="mx-auto flex max-w-7xl items-center justify-between">
                 {/* Logo */}
                 <h2 className="font-funnel text-xl font-bold text-white">
-                    <Link to="/" onClick={() => setActiveItem(null)}>
+                    <Link to="/">
                         Indal Bind
                     </Link>
                 </h2>
@@ -47,13 +34,12 @@ function Navbar() {
                             <AnimatedNavText
                                 text={link.name}
                                 href={link.href}
-                                isActive={activeItem === link.name}
-                                onClick={() => setActiveItem(link.name)}
+                                isActive={location.pathname === link.href}
                             />
                         </li>
                     ))}
                     <li>
-                        <Link to="/contact" onClick={() => setActiveItem(null)}>
+                        <Link to="/contact">
                             <ContactButton />
                         </Link>
                     </li>
@@ -81,11 +67,8 @@ function Navbar() {
                             <AnimatedNavText
                                 text={link.name}
                                 href={link.href}
-                                isActive={activeItem === link.name}
-                                onClick={() => {
-                                    setActiveItem(link.name);
-                                    setIsOpen(false);
-                                }}
+                                isActive={location.pathname === link.href}
+                                onClick={() => setIsOpen(false)}
                             />
                         </li>
                     ))}
@@ -93,10 +76,7 @@ function Navbar() {
                     <li>
                         <Link
                             to="/contact"
-                            onClick={() => {
-                                setActiveItem(null);
-                                setIsOpen(false);
-                            }}
+                            onClick={() => setIsOpen(false)}
                         >
                             <ContactButton />
                         </Link>
