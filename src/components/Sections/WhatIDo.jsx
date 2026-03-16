@@ -14,7 +14,7 @@ const WhatIDo = () => {
                     </h3>
                     <p className="font-funnel mt-2 text-sm text-zinc-600">
                         Scalable backends, REST APIs, and modern frontend
-                        architectures | <b>MERN</b> | <b>Flask</b>
+                        architectures | <b>MERN</b> | <b>Flask</b> | <b>Fast API</b>
                     </p>
                 </WobbleCard>
 
@@ -33,7 +33,8 @@ const WhatIDo = () => {
                         Deep Learning and AI
                     </h3>
                     <p className=" font-funnel mt-2 text-sm text-zinc-600">
-                        Neural networks, <b>Transformer</b> , intelligent systems, and deployment.
+                        Neural networks, <b>Transformer</b> , intelligent
+                        systems, and deployment.
                         {/* we have to add RAG,LangChain,Vector DB */}
                     </p>
                 </WobbleCard>
