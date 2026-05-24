@@ -1,5 +1,5 @@
 import { ExternalLink, Mail, Download } from "lucide-react";
-import profileImg from "../../assets/profile_1.jpg";
+import profileImg from "../../assets/profile_final.png";
 import SectionDivider from "../ui/SectionDivider";
 import Usage from "./Usage";
 import SoftSkill from "./Softskill";
