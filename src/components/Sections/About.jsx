@@ -1,5 +1,5 @@
 import { ExternalLink, Mail, Download } from "lucide-react";
-import profileImg from "../../assets/Profile.jpeg";
+import profileImg from "../../assets/profile_1.jpg";
 import SectionDivider from "../ui/SectionDivider";
 import Usage from "./Usage";
 import SoftSkill from "./Softskill";
@@ -85,7 +85,7 @@ export default function About() {
                                 <img
                                     src={profileImg}
                                     alt="Profile"
-                                    className="h-90 w-75 object-cover"
+                                    className="h-90 w-75 object-cover object-[50%_5%]"
                                 />
                             </div>
 
