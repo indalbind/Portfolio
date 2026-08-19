@@ -265,11 +265,23 @@ export const education = [
     },
 ];
 
+// Experience entries. Newest first — the section renders them in array order.
+// Every field except `role`, `org` and `points` is optional, so a new client,
+// internship or job can be added by dropping in another object.
+//   kind: "freelance" | "client" | "internship" | "fulltime" | "project"
+//         (drives the badge colour + icon in the Experience section)
+//   link: optional { label, href } shown as an external link on the card
 export const experience = [
     {
-        title: "Freelance Web Developer — VYRL (Creative Studio, NZ)",
-        subtitle:
+        role: "Freelance Web Developer",
+        org: "VYRL — Creative Studio",
+        kind: "freelance",
+        period: "2025",
+        location: "New Zealand · Remote",
+        summary:
             "Shipped a production Next.js + WebGL marketing platform for a real client.",
+        stack: ["Next.js", "WebGL", "Cloudflare Workers", "Tailwind CSS"],
+        link: { label: "vyrl.co.nz", href: "https://vyrl.co.nz" },
         points: [
             "Delivered an immersive, animation-heavy site to a live domain on Cloudflare Workers",
             "Owned the lead-intake pipeline end to end — form, validation, delivery and conversion tracking",
@@ -278,8 +290,12 @@ export const experience = [
         ],
     },
     {
-        title: "Project-Based ML Experience",
-        subtitle: "End-to-end ML systems from preprocessing to deployment.",
+        role: "Applied ML Engineering",
+        org: "Self-directed & academic projects",
+        kind: "project",
+        period: "2024 — present",
+        summary: "End-to-end ML systems from preprocessing to deployment.",
+        stack: ["Python", "scikit-learn", "Pandas", "Streamlit"],
         points: [
             "ML pipelines & supervised learning architecture",
             "Model evaluation & hyperparameter optimization",
@@ -287,8 +303,12 @@ export const experience = [
         ],
     },
     {
-        title: "Software Engineering",
-        subtitle: "Building scalable web applications.",
+        role: "Full-Stack Development",
+        org: "Personal & coursework projects",
+        kind: "project",
+        period: "2023 — present",
+        summary: "Building scalable web applications.",
+        stack: ["Node.js", "Express", "React", "MongoDB"],
         points: [
             "Developed REST APIs using Node.js and Express",
             "Optimized database query performance by 30%",

@@ -6,8 +6,10 @@ import {
     BadgeCheck,
     Globe,
     Sparkles,
-    Cpu,
-    Code2,
+    Briefcase,
+    Building2,
+    FlaskConical,
+    ArrowUpRight,
 } from "lucide-react";
 
 import { Section, SectionHeading } from "../components/ui/Section";
@@ -21,7 +23,39 @@ import {
     languages,
 } from "../data/portfolio";
 
-const expIcons = [Cpu, Code2];
+// Presentation per experience `kind` — add a key here to support a new type.
+const expKinds = {
+    freelance: {
+        icon: Briefcase,
+        label: "Freelance",
+        badge: "border-emerald-400/25 bg-emerald-400/10 text-emerald-300",
+        glow: "rgba(52,211,153,0.14)",
+    },
+    client: {
+        icon: Briefcase,
+        label: "Client work",
+        badge: "border-emerald-400/25 bg-emerald-400/10 text-emerald-300",
+        glow: "rgba(52,211,153,0.14)",
+    },
+    internship: {
+        icon: Building2,
+        label: "Internship",
+        badge: "border-amber-400/25 bg-amber-400/10 text-amber-300",
+        glow: "rgba(251,191,36,0.14)",
+    },
+    fulltime: {
+        icon: Building2,
+        label: "Full-time",
+        badge: "border-sky-400/25 bg-sky-400/10 text-sky-300",
+        glow: "rgba(56,189,248,0.14)",
+    },
+    project: {
+        icon: FlaskConical,
+        label: "Projects",
+        badge: "border-violet-400/25 bg-violet-400/10 text-violet-300",
+        glow: "rgba(167,139,250,0.14)",
+    },
+};
 
 function Education() {
     const timelineRef = useRef(null);
@@ -105,63 +139,117 @@ function Experience() {
                 description="Practical engineering experience across machine learning systems and full-stack development."
             />
 
-            <div className="grid items-start gap-8 lg:grid-cols-3">
-                {/* Experience cards */}
-                <div className="space-y-6 lg:col-span-2">
+            {/* Primary focus — a compact strip instead of a sticky side column */}
+            <motion.div
+                initial={{ opacity: 0, y: 12 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ duration: 0.6 }}
+                className="-mt-8 mb-12 flex flex-wrap items-center gap-3"
+            >
+                <span className="font-mono text-[10px] tracking-[0.3em] uppercase text-slate-500">
+                    primary focus
+                </span>
+                {focusAreas.map((focus) => (
+                    <span
+                        key={focus}
+                        className="rounded-full border border-white/10 bg-white/5 px-4 py-1.5 font-mono text-xs text-sky-300"
+                    >
+                        {focus}
+                    </span>
+                ))}
+            </motion.div>
+
+            {/* Timeline rail — grows with the list, no fixed two-column layout */}
+            <div className="relative">
+                <div className="absolute left-4 top-2 bottom-2 hidden w-px bg-white/8 md:block" />
+
+                <div className="space-y-6">
                     {experience.map((exp, i) => {
-                        const Icon = expIcons[i % expIcons.length];
+                        const { icon: Icon, label, badge, glow } = expKinds[exp.kind] ?? expKinds.project;
                         return (
-                            <GlowCard key={exp.title} delay={i * 0.1} className="p-8">
-                                <div className="flex items-start justify-between gap-4">
-                                    <div>
-                                        <h3 className="font-display text-xl font-bold text-white">
-                                            {exp.title}
-                                        </h3>
-                                        <p className="mt-2 text-sm text-slate-400">
-                                            {exp.subtitle}
-                                        </p>
+                            <div
+                                key={`${exp.role}-${exp.org}`}
+                                className="relative md:pl-14"
+                            >
+                                <span className="absolute left-4 top-9 z-10 hidden h-3 w-3 -translate-x-1/2 rounded-full border-2 border-void bg-sky-400 shadow-[0_0_12px_rgba(56,189,248,0.8)] md:block" />
+
+                                <GlowCard delay={i * 0.08} glow={glow} className="p-8">
+                                    <div className="flex items-start justify-between gap-4">
+                                        <div className="min-w-0">
+                                            <span
+                                                className={`inline-flex items-center gap-1.5 rounded-full border px-2.5 py-1 font-mono text-[10px] tracking-[0.15em] uppercase ${badge}`}
+                                            >
+                                                {label}
+                                            </span>
+                                            <h3 className="mt-3 font-display text-xl font-bold text-white">
+                                                {exp.role}
+                                            </h3>
+                                            <p className="mt-1 font-mono text-xs text-slate-500">
+                                                {exp.org}
+                                                {exp.period && (
+                                                    <>
+                                                        <span className="text-slate-700"> | </span>
+                                                        {exp.period}
+                                                    </>
+                                                )}
+                                                {exp.location && (
+                                                    <>
+                                                        <span className="text-slate-700"> | </span>
+                                                        {exp.location}
+                                                    </>
+                                                )}
+                                            </p>
+                                            {exp.summary && (
+                                                <p className="mt-3 text-sm text-slate-400">
+                                                    {exp.summary}
+                                                </p>
+                                            )}
+                                        </div>
+                                        <span className="shrink-0 rounded-xl border border-white/10 bg-white/5 p-3 text-violet-400">
+                                            <Icon size={22} />
+                                        </span>
                                     </div>
-                                    <span className="rounded-xl border border-white/10 bg-white/5 p-3 text-violet-400">
-                                        <Icon size={22} />
-                                    </span>
-                                </div>
-                                <ul className="mt-6 space-y-3">
-                                    {exp.points.map((point) => (
-                                        <li
-                                            key={point}
-                                            className="flex items-start gap-3 text-sm text-slate-300"
-                                        >
-                                            <span className="mt-2 h-1 w-1 shrink-0 rounded-full bg-violet-400 shadow-[0_0_6px_rgba(167,139,250,0.8)]" />
-                                            {point}
-                                        </li>
-                                    ))}
-                                </ul>
-                            </GlowCard>
+
+                                    <ul className="mt-6 space-y-3">
+                                        {exp.points.map((point) => (
+                                            <li
+                                                key={point}
+                                                className="flex items-start gap-3 text-sm text-slate-300"
+                                            >
+                                                <span className="mt-2 h-1 w-1 shrink-0 rounded-full bg-violet-400 shadow-[0_0_6px_rgba(167,139,250,0.8)]" />
+                                                {point}
+                                            </li>
+                                        ))}
+                                    </ul>
+
+                                    {(exp.stack?.length || exp.link) && (
+                                        <div className="mt-6 flex flex-wrap items-center gap-2 border-t border-white/8 pt-5">
+                                            {exp.stack?.map((tech) => (
+                                                <span
+                                                    key={tech}
+                                                    className="rounded-md border border-white/8 bg-white/5 px-2.5 py-1 font-mono text-[11px] text-slate-400"
+                                                >
+                                                    {tech}
+                                                </span>
+                                            ))}
+                                            {exp.link && (
+                                                <a
+                                                    href={exp.link.href}
+                                                    target="_blank"
+                                                    rel="noreferrer"
+                                                    className="ml-auto inline-flex items-center gap-1.5 font-mono text-[11px] text-sky-400 transition-colors hover:text-sky-300"
+                                                >
+                                                    {exp.link.label}
+                                                    <ArrowUpRight size={13} />
+                                                </a>
+                                            )}
+                                        </div>
+                                    )}
+                                </GlowCard>
+                            </div>
                         );
                     })}
-                </div>
-
-                {/* Focus areas — sticky */}
-                <div className="space-y-5 lg:sticky lg:top-28">
-                    {focusAreas.map((focus, i) => (
-                        <motion.div
-                            key={focus}
-                            initial={{ opacity: 0, x: 20 }}
-                            whileInView={{ opacity: 1, x: 0 }}
-                            viewport={{ once: true }}
-                            transition={{ duration: 0.6, delay: i * 0.12 }}
-                            whileHover={{ scale: 1.02 }}
-                            className="glass relative overflow-hidden rounded-2xl p-8 text-center"
-                        >
-                            <div className="absolute inset-x-0 top-0 h-px bg-linear-to-r from-transparent via-sky-400/60 to-transparent" />
-                            <p className="font-mono text-[10px] tracking-[0.3em] uppercase text-slate-500">
-                                primary focus
-                            </p>
-                            <h4 className="text-gradient mt-3 font-display text-xl font-bold">
-                                {focus}
-                            </h4>
-                        </motion.div>
-                    ))}
                 </div>
             </div>
         </Section>
