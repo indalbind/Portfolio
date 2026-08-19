@@ -20,7 +20,11 @@ export const profile = {
     resumeView:
         "https://drive.google.com/file/d/1OsHS3xazAZTEYo53J1fRwzd5S88sbYs6/view?usp=sharing",
     resumeDownload: "/Indal_Bind_cv.pdf",
-    formspreeEndpoint: "https://formspree.io/f/xojnybbe",
+    // Set VITE_FORMSPREE_ENDPOINT in .env (local) and in the Vercel project
+    // env vars (production). The literal below is only a fallback.
+    formspreeEndpoint:
+        import.meta.env.VITE_FORMSPREE_ENDPOINT ||
+        "https://formspree.io/f/xeajvoqw",
     socials: {
         github: "https://github.com/indalbind",
         linkedin: "https://www.linkedin.com/in/indaldatascientist",

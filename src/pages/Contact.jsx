@@ -47,6 +47,7 @@ export default function Contact() {
         email: "",
         subject: "",
         message: "",
+        _gotcha: "",
     });
     const [status, setStatus] = useState("idle");
 
@@ -55,6 +56,14 @@ export default function Contact() {
 
     const handleSubmit = async (e) => {
         e.preventDefault();
+
+        if (!profile.formspreeEndpoint) {
+            console.error("Formspree endpoint is not configured.");
+            setStatus("error");
+            setTimeout(() => setStatus("idle"), 3000);
+            return;
+        }
+
         setStatus("submitting");
         try {
             const response = await fetch(profile.formspreeEndpoint, {
@@ -63,13 +72,22 @@ export default function Contact() {
                     "Content-Type": "application/json",
                     Accept: "application/json",
                 },
-                body: JSON.stringify(formData),
+                body: JSON.stringify({
+                    ...formData,
+                    // Formspree uses these to set the reply-to and the
+                    // subject line of the notification email.
+                    _replyto: formData.email,
+                    _subject: `Portfolio: ${formData.subject}`,
+                }),
             });
+
             if (response.ok) {
                 setStatus("success");
-                setFormData({ name: "", email: "", subject: "", message: "" });
+                setFormData({ name: "", email: "", subject: "", message: "", _gotcha: "" });
                 setTimeout(() => setStatus("idle"), 5000);
             } else {
+                const detail = await response.json().catch(() => null);
+                console.error("Formspree rejected the submission:", response.status, detail);
                 setStatus("error");
                 setTimeout(() => setStatus("idle"), 3000);
             }
@@ -195,6 +213,19 @@ export default function Contact() {
                                     className={`${inputCls} resize-none`}
                                 />
                             </div>
+
+                            {/* Formspree honeypot: bots fill this, humans never
+                                see it. Submissions with it set are dropped. */}
+                            <input
+                                type="text"
+                                name="_gotcha"
+                                tabIndex={-1}
+                                autoComplete="off"
+                                aria-hidden="true"
+                                className="hidden"
+                                value={formData._gotcha}
+                                onChange={handleChange}
+                            />
 
                             <motion.button
                                 disabled={status === "submitting"}
