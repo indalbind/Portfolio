@@ -81,6 +81,9 @@ export const techStack = [
             "Vue.js",
             "Next.js",
             "Tailwind CSS",
+            "Three.js / WebGL",
+            "Framer Motion",
+            "GSAP",
         ],
     },
     {
@@ -113,11 +116,19 @@ export const techStack = [
     },
     {
         category: "Databases & Storage",
-        items: ["MongoDB", "PostgreSQL", "SQLite", "VectorDB"],
+        items: ["MongoDB", "PostgreSQL", "SQLite", "VectorDB", "Prisma ORM"],
     },
     {
         category: "DevOps & Tools",
-        items: ["Docker", "Linux", "Git & GitHub", "Postman", "Kubernetes"],
+        items: [
+            "Docker",
+            "Linux",
+            "Git & GitHub",
+            "Postman",
+            "Kubernetes",
+            "Cloudflare Workers",
+            "Vercel",
+        ],
     },
     {
         category: "MLOps & Deployment",
@@ -140,6 +151,8 @@ export const techLogos = [
     { name: "JavaScript", icon: "devicon-javascript-plain colored" },
     { name: "TypeScript", icon: "devicon-typescript-plain colored" },
     { name: "React", icon: "devicon-react-original colored" },
+    { name: "Next.js", icon: "devicon-nextjs-plain colored" },
+    { name: "Three.js", icon: "devicon-threejs-original colored" },
     { name: "Node.js", icon: "devicon-nodejs-plain colored" },
     { name: "Express", icon: "devicon-express-original" },
     { name: "Tailwind CSS", icon: "devicon-tailwindcss-plain colored" },
@@ -150,7 +163,9 @@ export const techLogos = [
     { name: "Jupyter", icon: "devicon-jupyter-plain colored" },
     { name: "MongoDB", icon: "devicon-mongodb-plain colored" },
     { name: "PostgreSQL", icon: "devicon-postgresql-plain colored" },
+    { name: "Prisma", icon: "devicon-prisma-original colored" },
     { name: "Docker", icon: "devicon-docker-plain colored" },
+    { name: "Cloudflare", icon: "devicon-cloudflare-plain colored" },
     { name: "Linux", icon: "devicon-linux-plain colored" },
     { name: "Git", icon: "devicon-git-plain colored" },
     { name: "GitHub", icon: "devicon-github-original" },
@@ -158,6 +173,34 @@ export const techLogos = [
 ];
 
 export const projects = [
+    {
+        title: "VYRL — Creative Studio Platform",
+        subtitle: "Client Project · Next.js 15 + WebGL · Live in Production",
+        category: "web",
+        featured: true,
+        github: "",
+        liveDemo: "https://vyrl.co.nz",
+        points: [
+            "Built and shipped a production marketing platform for a Wellington-based creative studio, live at vyrl.co.nz",
+            "Engineered an immersive front-end with React Three Fiber (WebGL), GSAP and Framer Motion — animated entry gate, hexagonal grid scenes and a scroll-driven media corridor",
+            "Deployed to Cloudflare Workers via the OpenNext pipeline, diagnosing and fixing edge-runtime-only failures (no filesystem cache, no sharp image optimizer)",
+            "Rebuilt the lead-intake pipeline so a brief is filed client-side — server-side posts were being scored as spam on the datacentre IP and silently dropped",
+            "Made lead delivery fault-isolated across three independent channels (form filing, transactional email, Meta Conversions API) so one failure never costs the others",
+            "Integrated Meta Pixel + server-side CAPI with a shared event_id for conversion deduplication across browser and worker",
+            "Tuned scroll performance and delivered full responsiveness across breakpoints; collaborated in a 3-developer team over PR review on GitHub",
+        ],
+        tags: [
+            "Next.js 15",
+            "TypeScript",
+            "React Three Fiber",
+            "Framer Motion",
+            "GSAP",
+            "Tailwind CSS",
+            "Cloudflare Workers",
+            "Prisma",
+            "Zod",
+        ],
+    },
     {
         title: "Quiz Management System",
         subtitle: "Full-Stack Web Application",
@@ -224,6 +267,17 @@ export const education = [
 
 export const experience = [
     {
+        title: "Freelance Web Developer — VYRL (Creative Studio, NZ)",
+        subtitle:
+            "Shipped a production Next.js + WebGL marketing platform for a real client.",
+        points: [
+            "Delivered an immersive, animation-heavy site to a live domain on Cloudflare Workers",
+            "Owned the lead-intake pipeline end to end — form, validation, delivery and conversion tracking",
+            "Debugged edge-runtime and deliverability failures that only surfaced in production",
+            "Worked in a 3-developer team with feature branches and pull-request review",
+        ],
+    },
+    {
         title: "Project-Based ML Experience",
         subtitle: "End-to-end ML systems from preprocessing to deployment.",
         points: [
@@ -249,6 +303,7 @@ export const focusAreas = [
 ];
 
 export const achievements = [
+    "Shipped a client platform to production (vyrl.co.nz)",
     "Top grades in Web & ML projects",
     "Designed structured AI learning tracks",
     "Research paper accepted (future)",

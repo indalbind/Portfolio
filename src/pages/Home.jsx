@@ -203,8 +203,8 @@ function WhatIDo() {
 function Stats() {
     const stats = [
         { value: "8.46", label: "CGPA — IIT Madras" },
-        { value: "15+", label: "Tools & technologies" },
-        { value: "3+", label: "Full-stack & ML projects" },
+        { value: "20+", label: "Tools & technologies" },
+        { value: "4+", label: "Full-stack & ML projects" },
         { value: "∞", label: "Curiosity" },
     ];
     return (

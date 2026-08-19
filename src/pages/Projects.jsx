@@ -20,10 +20,22 @@ function ProjectCard({ project }) {
             animate={{ opacity: 1, y: 0 }}
             exit={{ opacity: 0, scale: 0.97 }}
             transition={{ duration: 0.45, ease: [0.16, 1, 0.3, 1] }}
-            className="glass group relative overflow-hidden rounded-2xl p-8 transition-all duration-300 hover:-translate-y-1 hover:border-sky-400/30"
+            className={`glass group relative overflow-hidden rounded-2xl p-8 transition-all duration-300 hover:-translate-y-1 hover:border-sky-400/30 ${
+                project.featured ? "border-sky-400/25" : ""
+            }`}
         >
-            {/* Corner glow on hover */}
-            <div className="pointer-events-none absolute -right-16 -top-16 h-40 w-40 rounded-full bg-sky-500/10 blur-3xl opacity-0 transition-opacity duration-500 group-hover:opacity-100" />
+            {/* Corner glow on hover — always lit for the featured project */}
+            <div
+                className={`pointer-events-none absolute -right-16 -top-16 h-40 w-40 rounded-full bg-sky-500/10 blur-3xl transition-opacity duration-500 group-hover:opacity-100 ${
+                    project.featured ? "opacity-100" : "opacity-0"
+                }`}
+            />
+
+            {project.featured && (
+                <span className="absolute right-0 top-0 rounded-bl-2xl bg-linear-to-r from-sky-500 to-violet-600 px-4 py-1.5 font-mono text-[10px] font-medium tracking-wide text-white">
+                    FEATURED
+                </span>
+            )}
 
             {/* Header */}
             <div className="flex items-start justify-between gap-4">
@@ -41,7 +53,7 @@ function ProjectCard({ project }) {
                     </div>
                 </div>
 
-                <div className="flex gap-2">
+                <div className={`flex gap-2 ${project.featured ? "mt-8" : ""}`}>
                     {project.github && (
                         <a
                             href={project.github}
